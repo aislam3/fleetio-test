@@ -36,8 +36,13 @@ order by count(created_at) desc, count(converted_at)/ count(created_at) desc
 
 */ 
 
-SELECT source, fleet_size, industry, count(converted_at) as converted, count(created_at) as created, 
-count(converted_at)/ count(created_at) as percentage
+SELECT 
+    source
+    , fleet_size
+    , industry
+    , count(converted_at) as converted
+    , count(created_at) as created
+    , count(converted_at)/ count(created_at) as percentage
 FROM {{ref('leads')}} 
 group by 1,2,3
 order by count(converted_at) desc, count(converted_at)/ count(created_at) desc
