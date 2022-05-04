@@ -37,3 +37,23 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
+
+
+seeds:
+  fleetio_dbt:
+    +enabled: true
+  #  +schema: seed_data
+  #  ^^^^ Creates a new dataset
+
+    leads:
+      # Override column types
+      +column_types:
+        created_at: timestamp
+        converted_at: timestamp
+    contacts:
+      +column_types:
+        created_at: timestamp
+    opportunities:
+      +column_types:
+        created_at: timestamp
+        closed_at: timestamp
